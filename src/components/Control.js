@@ -1,7 +1,9 @@
+"use client";
 import Image from "next/image";
+import { useState } from "react";
 
-import mode from "@/src/assets/icons/mode.svg";
-import templates from "@/src/assets/icons/templates.svg";
+import modeImg from "@/src/assets/icons/mode.svg";
+import templatesImg from "@/src/assets/icons/templates.svg";
 import productivity from "@/src/assets/icons/productivity.svg";
 import sleep from "@/src/assets/icons/sleep.svg";
 import jazz from "@/src/assets/icons/jazz.svg";
@@ -17,15 +19,32 @@ import timer from "@/src/assets/icons/timer.svg";
 import note from "@/src/assets/icons/note.svg";
 
 function Control() {
+  const [mode, setMode] = useState("hidden");
+  const [templates, setTemplates] = useState("hidden");
+  const [more, setMore] = useState("hidden");
+
+  const handleMode = () => {
+    mode == "hidden" ? setMode("block") : setMode("hidden");
+  };
+
+  const handleTemplates = () => {
+    templates == "hidden" ? setTemplates("block") : setTemplates("hidden");
+  };
+
+  const handleMore = () => {
+    more == "hidden" ? setMore("block") : setMore("hidden");
+  };
+
   return (
     <div className="bg-[#d9d9d978] w-[100px] h-[360px] rounded-full absolute right-[100px] top-[200px]">
       <div className="h-[120px] border-b-[1px] border-[black] relative cursor-pointer">
         <Image
-          src={mode}
+          src={modeImg}
           alt="mode"
           className="absolute top-[31.2%] right-[27%]"
+          onClick={() => handleMode()}
         />
-        <div className="hidden">
+        <div className={mode}>
           <div className="bg-[black] w-[240px] h-[120px] rounded-tr-[50px] absolute right-[0] z-[-1]"></div>
 
           <div className="bg-[black] text-white w-[380px] h-[390px] p-6 rounded-xl absolute right-[150px] cursor-default">
@@ -71,11 +90,12 @@ function Control() {
       </div>
       <div className="h-[120px] border-b-[1px] border-[black] relative cursor-pointer">
         <Image
-          src={templates}
+          src={templatesImg}
           alt="templates"
           className="absolute top-[31.2%] right-[27%]"
+          onClick={() => handleTemplates()}
         />
-        <div className="hidden">
+        <div className={templates}>
           <div className="bg-[black] w-[240px] h-[120px] absolute right-[0] z-[-1]"></div>
 
           <div className="bg-[black] text-white w-[380px] h-[390px] p-6 rounded-xl absolute top-[-130px] right-[150px] cursor-default">
@@ -98,8 +118,9 @@ function Control() {
           src={productivity}
           alt="productivity"
           className="absolute top-[31.2%] right-[27%]"
+          onClick={() => handleMore()}
         />
-        <div className="hidden">
+        <div className={more}>
           <div className="bg-[black] w-[240px] h-[120px] rounded-br-[50px] absolute right-[0] z-[-1]"></div>
 
           <div className="bg-[black] text-white w-[380px] h-[350px] p-6 rounded-xl absolute top-[-230px] right-[150px] cursor-default">

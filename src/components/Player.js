@@ -1,7 +1,7 @@
 import prev from "@/src/assets/icons/prev.svg";
 import next from "@/src/assets/icons/next.svg";
 import play from "@/src/assets/icons/play.svg";
-import pause from "@/src/assets/icons/prev.svg";
+import pause from "@/src/assets/icons/pause.svg";
 import Image from "next/image";
 
 function Player() {
@@ -12,6 +12,11 @@ function Player() {
         src={play}
         alt="play"
         className="w-[85px] h-[85px] border-[1px] rounded-full p-4 text-[24px] cursor-pointer hover:bg-[#9d9d9d66]"
+      />
+      <Image
+        src={pause}
+        alt="pause"
+        className="hidden w-[85px] h-[85px] border-[1px] rounded-full p-4 text-[24px] cursor-pointer hover:bg-[#9d9d9d66]"
       />
       <Image src={next} alt="next" className="cursor-pointer" />
     </div>
