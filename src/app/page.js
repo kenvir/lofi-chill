@@ -1,6 +1,6 @@
-import Home from "../pages/Home";
+import Home from "./dashboard/Home";
 
-export default function page() {
+export default function HomePage() {
   return (
     <main className="main flex flex-col">
       <Home />

@@ -1,9 +1,14 @@
+"use client";
+
 import Image from "next/image";
 import dark from "@/src/assets/icons/dark.svg";
 import light from "@/src/assets/icons/light.svg";
+import { useRouter } from "next/navigation";
 import Link from "next/link";
 
 function Header() {
+  const router = useRouter;
+
   return (
     <header className="flex justify-between items-center px-16 pt-3">
       <Link href="/">

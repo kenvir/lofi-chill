@@ -2,10 +2,10 @@ import Link from "next/link";
 
 function SignIn() {
   return (
-    <div className="flex flex-col items-center mt-[80px]">
+    <main className="flex flex-col items-center mt-[80px] main">
       <form
         action=""
-        className="bg-[#8e8e8ea2] flex flex-col w-[600px] p-10 rounded-xl"
+        className="form bg-[#8e8e8ea2] flex flex-col w-[600px] p-10 rounded-xl"
       >
         <h2 className="text-[64px] text-center font-bold mb-8">Sign In</h2>
         <div className="flex items-center justify-center h-[40px] gap-5">
@@ -26,17 +26,17 @@ function SignIn() {
           </button>
         </div>
 
-        <span className="flex items-center justify-center">
+        <div className="flex items-center justify-center">
           Dont have an account yet? &nbsp;
           <Link
-            href="/SignUp"
+            href="/dashboard/SignUp"
             className="text-[#001AFF] font-medium cursor-pointer"
           >
             Sign Up.
           </Link>
-        </span>
+        </div>
       </form>
-    </div>
+    </main>
   );
 }
 

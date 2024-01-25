@@ -37,12 +37,14 @@ function Control() {
 
   return (
     <div className="bg-[#d9d9d978] w-[100px] h-[360px] rounded-full absolute right-[100px] top-[200px]">
-      <div className="h-[120px] border-b-[1px] border-[black] relative cursor-pointer">
+      <div
+        className="h-[120px] border-b-[1px] border-[black] relative cursor-pointer"
+        onClick={() => handleMode()}
+      >
         <Image
           src={modeImg}
           alt="mode"
           className="absolute top-[31.2%] right-[27%]"
-          onClick={() => handleMode()}
         />
         <div className={mode}>
           <div className="bg-[black] w-[240px] h-[120px] rounded-tr-[50px] absolute right-[0] z-[-1]"></div>
@@ -88,12 +90,14 @@ function Control() {
           </div>
         </div>
       </div>
-      <div className="h-[120px] border-b-[1px] border-[black] relative cursor-pointer">
+      <div
+        className="h-[120px] border-b-[1px] border-[black] relative cursor-pointer"
+        onClick={() => handleTemplates()}
+      >
         <Image
           src={templatesImg}
           alt="templates"
           className="absolute top-[31.2%] right-[27%]"
-          onClick={() => handleTemplates()}
         />
         <div className={templates}>
           <div className="bg-[black] w-[240px] h-[120px] absolute right-[0] z-[-1]"></div>
@@ -113,12 +117,14 @@ function Control() {
           </div>
         </div>
       </div>
-      <div className="h-[120px] relative cursor-pointer">
+      <div
+        className="h-[120px] relative cursor-pointer"
+        onClick={() => handleMore()}
+      >
         <Image
           src={productivity}
           alt="productivity"
           className="absolute top-[31.2%] right-[27%]"
-          onClick={() => handleMore()}
         />
         <div className={more}>
           <div className="bg-[black] w-[240px] h-[120px] rounded-br-[50px] absolute right-[0] z-[-1]"></div>
