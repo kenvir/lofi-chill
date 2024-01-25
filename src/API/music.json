@@ -1,9 +1,8 @@
 [
   {
     "id": 1,
-    "title": "The Personality Trait That Makes People Happier",
-    "author": "Steven Jobs",
-    "tags": [{ "tag": "TRAVEL" }, { "tag": "BEAUTY" }, { "tag": "FASHION" }],
-    "img": "imgs/blog-detail.jpg"
+    "name": "The Personality Trait That Makes People Happier",
+    "source": "Steven Jobs",
+    "tags": "rain"
   }
 ]
