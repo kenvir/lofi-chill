@@ -6,13 +6,9 @@ import play from "@/src/assets/icons/play.svg";
 import pause from "@/src/assets/icons/pause.svg";
 import Image from "next/image";
 import { useEffect, useState } from "react";
-// import music from "@/src/API/music.json";
-// import rain from "@/src/assets/music/rain.mp3";
 
 function Player() {
-  // const [play, setPlay] = useState("false");
   const [img, setImg] = useState(pause);
-  // const [rain, setRain] = useState("false");
 
   const handleChange = () => {
     if (img === pause) {

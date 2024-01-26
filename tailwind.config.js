@@ -9,10 +9,10 @@ module.exports = {
 
     // "./src/**/*.{js,ts,jsx,tsx,mdx}",
   ],
-  theme: {
-    extend: {
-      displayBlock: ["group-hover"],
-    },
-  },
+  // theme: {
+  //   extend: {
+  //     displayBlock: ["group-hover"],
+  //   },
+  // },
   plugins: [],
 };

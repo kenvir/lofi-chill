@@ -34,7 +34,11 @@ body {
 }
 
 @layer base {
-
+  .error-message {
+    color: red;
+    width: 100%;
+    text-align: center;
+  }
 }
 
 @layer components {

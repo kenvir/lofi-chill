@@ -18,6 +18,8 @@ import start from "@/src/assets/icons/start.svg";
 import timer from "@/src/assets/icons/timer.svg";
 import note from "@/src/assets/icons/note.svg";
 
+
+
 function Control() {
   const [mode, setMode] = useState("hidden");
   const [templates, setTemplates] = useState("hidden");
