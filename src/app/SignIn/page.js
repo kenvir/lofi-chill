@@ -14,6 +14,7 @@ function SignIn() {
     <main className="flex flex-col items-center mt-[80px] main">
       <form
         action=""
+        autoComplete="new-password"
         className="form bg-[#8e8e8ea2] flex flex-col w-[600px] p-10 rounded-xl"
         onSubmit={handleSubmit()}
       >

@@ -1,6 +1,7 @@
 "use client";
 import Image from "next/image";
 import { useState } from "react";
+import { useSound } from "use-sound";
 
 import modeImg from "@/src/assets/icons/mode.svg";
 import templatesImg from "@/src/assets/icons/templates.svg";
@@ -9,7 +10,7 @@ import sleep from "@/src/assets/icons/sleep.svg";
 import jazz from "@/src/assets/icons/jazz.svg";
 import chill from "@/src/assets/icons/chill.svg";
 import silent from "@/src/assets/icons/silent.svg";
-import volume from "@/src/assets/icons/volume.svg";
+import loud from "@/src/assets/icons/loud.svg";
 import rain from "@/src/assets/icons/rain.svg";
 import traffic from "@/src/assets/icons/traffic.svg";
 import dark from "@/src/assets/imgs/16.jpg";
@@ -18,9 +19,8 @@ import start from "@/src/assets/icons/start.svg";
 import timer from "@/src/assets/icons/timer.svg";
 import note from "@/src/assets/icons/note.svg";
 
-
-
 function Control() {
+  // Control Menu
   const [mode, setMode] = useState("hidden");
   const [templates, setTemplates] = useState("hidden");
   const [more, setMore] = useState("hidden");
@@ -36,6 +36,27 @@ function Control() {
   const handleMore = () => {
     more == "hidden" ? setMore("block") : setMore("hidden");
   };
+
+  // Sound
+  // const [rain, setRain] = useState(false);
+  const [volume, setVolume] = useState(0.5);
+  const [rainClick] = useSound("/sound/rain.mp3", { volume });
+  const [trafficClick] = useSound("/sound/car.mp3", { volume });
+
+  const handleClickRain = () => {
+    rainClick();
+  };
+
+  const handleClickCar = () => {
+    trafficClick();
+  };
+
+  // Change Templates
+  const [imgTemp, setImgTemp] = useState();
+
+  const changeTemp = () => {};
+
+  console.log();
 
   return (
     <div className="bg-[#d9d9d978] w-[100px] h-[360px] rounded-full absolute right-[100px] top-[200px]">
@@ -70,9 +91,9 @@ function Control() {
               </div>
             </div>
             <div className="mt-[40px] flex items-center justify-center gap-3 ">
-              <Image src={silent} alt="silent" className="" />
+              <Image src={silent} alt="silent" className="cursor-pointer" />
               <input type="range" name="" id="" className="w-[75%]" />
-              <Image src={volume} alt="volume" className="" />
+              <Image src={loud} alt="loud" className="" />
             </div>
             <div className="text-white mt-8">
               <span className="font-bold text-[22px] ">BACKGROUND NOISE</span>
@@ -80,12 +101,26 @@ function Control() {
                 <span className="font-semibold text-[18px] pr-[17px]">
                   Rain
                 </span>
-                <Image src={rain} alt="rain" className="" />
+                <Image
+                  src={rain}
+                  alt="rain"
+                  className="cursor-pointer"
+                  onClick={() => {
+                    handleClickRain();
+                  }}
+                />
                 <input type="range" name="" id="" className="w-[56%]" />
               </div>
               <div className="flex items-center gap-4 mt-4">
                 <span className="font-semibold text-[18px]">Traffic</span>
-                <Image src={traffic} alt="traffic" className="" />
+                <Image
+                  src={traffic}
+                  alt="traffic"
+                  className=""
+                  onClick={() => {
+                    handleClickCar();
+                  }}
+                />
                 <input type="range" name="" id="" className="w-[56%]" />
               </div>
             </div>
@@ -112,7 +147,12 @@ function Control() {
                   <Image src={dark} alt="dark" className="rounded-[10px]" />
                 </div>
                 <div className="flex items-center w-[245px] cursor-pointer">
-                  <Image src={light} alt="light" className="rounded-[10px]" />
+                  <Image
+                    src={light}
+                    alt="light"
+                    className="rounded-[10px]"
+                    onClick={() => console.log(Image.src)}
+                  />
                 </div>
               </div>
             </div>

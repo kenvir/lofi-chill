@@ -7,10 +7,10 @@ export const metadata = {
   description: "Enjoy music and chill",
 };
 
-export default function RootLayout({ children }) {
+export default function RootLayout({ children, bgImage }) {
   return (
     <html lang="en">
-      <body>
+      <body className="image-changer" style={{ bgImage: `url('${bgImage}')` }}>
         <Header />
         {children}
       </body>

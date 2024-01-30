@@ -1,20 +1,33 @@
 "use client";
 
+import Image from "next/image";
+import { useEffect, useState } from "react";
+import { useSound } from "use-sound";
+
 import prev from "@/src/assets/icons/prev.svg";
 import next from "@/src/assets/icons/next.svg";
 import play from "@/src/assets/icons/play.svg";
-import pause from "@/src/assets/icons/pause.svg";
-import Image from "next/image";
-import { useEffect, useState } from "react";
+import pauseImg from "@/src/assets/icons/pause.svg";
 
 function Player() {
-  const [img, setImg] = useState(pause);
+  // Sound
+  const [volume, setVolume] = useState(0.5);
+  const [chillClick, { pause }] = useSound("/sound/chill-1.mp3", { volume });
 
-  const handleChange = () => {
-    if (img === pause) {
+  const handleClickChill = () => {
+    chillClick();
+  };
+
+  // Change state
+  const [img, setImg] = useState(pauseImg);
+
+  const handleChange = () => {  
+    if (img === pauseImg) {
       setImg(play);
+      handleClickChill();
     } else {
-      setImg(pause);
+      setImg(pauseImg);
+      pause();
     }
   };
 
