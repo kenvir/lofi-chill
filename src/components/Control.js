@@ -1,7 +1,8 @@
 "use client";
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useSound } from "use-sound";
+import useOnClickOutside from "use-onclickoutside-ssr";
 
 import modeImg from "@/src/assets/icons/mode.svg";
 import templatesImg from "@/src/assets/icons/templates.svg";
@@ -37,17 +38,35 @@ function Control() {
     more == "hidden" ? setMore("block") : setMore("hidden");
   };
 
-  // Sound
-  // const [rain, setRain] = useState(false);
+  // Total Volume
   const [volume, setVolume] = useState(0.5);
-  const [rainClick] = useSound("/sound/rain.mp3", { volume });
-  const [trafficClick] = useSound("/sound/car.mp3", { volume });
+  const handleVolume = (event) => {
+    setVolume(parseFloat(event.target.value));
+  };
+
+  // Rain Volume
+  const [volumeRain, setVolumeRain] = useState(0.5);
+  const handleVolumeRain = (e) => {
+    setVolumeRain(parseFloat(e.target.value));
+  };
+
+  // Traffic Volume
+  const [volumeTraffic, setVolumeTraffic] = useState(0.5);
+  const handleVolumeTraffic = (e) => {
+    setVolumeTraffic(parseFloat(e.target.value));
+  };
+
+  // Sound
+  const [rainClick, { stopRain }] = useSound("/sound/rain.mp3", { volumeRain });
+  const [trafficClick, { stopTraffic }] = useSound("/sound/car.mp3", {
+    volumeTraffic,
+  });
 
   const handleClickRain = () => {
     rainClick();
   };
 
-  const handleClickCar = () => {
+  const handleClickTraffic = () => {
     trafficClick();
   };
 
@@ -71,7 +90,6 @@ function Control() {
         />
         <div className={mode}>
           <div className="bg-[black] w-[240px] h-[120px] rounded-tr-[50px] absolute right-[0] z-[-1]"></div>
-
           <div className="bg-[black] text-white w-[380px] h-[390px] p-6 rounded-xl absolute right-[150px] cursor-default">
             <div className="flex-col flex">
               <span className="font-bold text-[22px] mb-4">MOOD</span>
@@ -92,7 +110,17 @@ function Control() {
             </div>
             <div className="mt-[40px] flex items-center justify-center gap-3 ">
               <Image src={silent} alt="silent" className="cursor-pointer" />
-              <input type="range" name="" id="" className="w-[75%]" />
+              <input
+                type="range"
+                name=""
+                id="volume"
+                max="1"
+                min="0"
+                step="0.01"
+                value={volume}
+                onChange={handleVolume}
+                className="w-[75%]"
+              />
               <Image src={loud} alt="loud" className="" />
             </div>
             <div className="text-white mt-8">
@@ -109,7 +137,17 @@ function Control() {
                     handleClickRain();
                   }}
                 />
-                <input type="range" name="" id="" className="w-[56%]" />
+                <input
+                  type="range"
+                  name=""
+                  id="volumeRain"
+                  max="1"
+                  min="0"
+                  step="0.01"
+                  value={volumeRain}
+                  onChange={handleVolumeRain}
+                  className="w-[56%]"
+                />
               </div>
               <div className="flex items-center gap-4 mt-4">
                 <span className="font-semibold text-[18px]">Traffic</span>
@@ -118,10 +156,20 @@ function Control() {
                   alt="traffic"
                   className=""
                   onClick={() => {
-                    handleClickCar();
+                    handleClickTraffic();
                   }}
                 />
-                <input type="range" name="" id="" className="w-[56%]" />
+                <input
+                  type="range"
+                  name=""
+                  id="volumeTraffic"
+                  max="1"
+                  min="0"
+                  step="0.01"
+                  value={volumeTraffic}
+                  onChange={handleVolumeTraffic}
+                  className="w-[56%]"
+                />
               </div>
             </div>
           </div>
@@ -151,6 +199,7 @@ function Control() {
                     src={light}
                     alt="light"
                     className="rounded-[10px]"
+                    // bgImage={Image.src}
                     onClick={() => console.log(Image.src)}
                   />
                 </div>
