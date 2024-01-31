@@ -2,7 +2,8 @@
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { useSound } from "use-sound";
-import useOnClickOutside from "use-onclickoutside-ssr";
+
+import ClickOutsideWrapper from "./ClickOutSide";
 
 import modeImg from "@/src/assets/icons/mode.svg";
 import templatesImg from "@/src/assets/icons/templates.svg";
@@ -19,7 +20,6 @@ import light from "@/src/assets/imgs/17.png";
 import start from "@/src/assets/icons/start.svg";
 import timer from "@/src/assets/icons/timer.svg";
 import note from "@/src/assets/icons/note.svg";
-import ClickOutsideWrapper from "./ClickOutSide";
 
 function Control() {
   // Control Menu
@@ -69,6 +69,9 @@ function Control() {
   const [trafficClick, { stopTraffic }] = useSound("/sound/car.mp3", {
     volumeTraffic,
   });
+  const [chillClick, { stopChill }] = useSound("/sound/chill-1.mp3");
+  const [jazzClick, { stopJazz }] = useSound("/sound/chill-1.mp3");
+  const [SleepClick, { stopSleep }] = useSound("/sound/chill-1.mp3");
 
   const handleClickRain = () => {
     rainClick();
@@ -78,12 +81,24 @@ function Control() {
     trafficClick();
   };
 
+  const handleClickChill = () => {
+    chillClick();
+  };
+
   // Change Templates
+
   const [imgTemp, setImgTemp] = useState();
 
-  const changeTemp = () => {};
+  var bgImg = document.getElementsByTagName("body")[0];
+  // bgImg.style.backgroundImage = "url()";
 
-  console.log();
+  const getPath = (e) => {
+    e.preventDefault();
+    setImgTemp(e.target.src);
+    console.log(imgTemp);
+  };
+
+  const changeTemp = () => {};
 
   return (
     <div className="bg-[#d9d9d978] w-[100px] h-[360px] rounded-full absolute right-[100px] top-[200px]">
@@ -103,17 +118,32 @@ function Control() {
               <div className="flex-col flex">
                 <span className="font-bold text-[22px] mb-4">MOOD</span>
                 <div className="flex justify-between">
-                  <div className="flex flex-col items-center w-[90px] bg-white text-black py-3 px-4 rounded-[10px] cursor-pointer">
+                  <div
+                    className="flex flex-col items-center w-[90px] bg-white text-black py-3 px-4 rounded-[10px] cursor-pointer"
+                    onClick={() => {
+                      handleClickChill();
+                    }}
+                  >
                     <Image src={sleep} alt="sleep" className="" />
                     <span className="font-bold text-[18px] ">Sleepy</span>
                   </div>
-                  <div className="flex flex-col items-center w-[90px] bg-white text-black py-3 px-4 rounded-[10px] cursor-pointer">
+                  <div
+                    className="flex flex-col items-center w-[90px] bg-white text-black py-3 px-4 rounded-[10px] cursor-pointer"
+                    onClick={() => {
+                      handleClickChill();
+                    }}
+                  >
                     <Image src={jazz} alt="jazz" className="" />
                     <span className="font-bold text-[18px] ">Jazzy</span>
                   </div>
-                  <div className="flex flex-col items-center w-[90px] bg-white text-black py-3 px-4 rounded-[10px] cursor-pointer">
+                  <div
+                    className="flex flex-col items-center w-[90px] bg-white text-black py-3 px-4 rounded-[10px] cursor-pointer"
+                    onClick={() => {
+                      handleClickChill();
+                    }}
+                  >
                     <Image src={chill} alt="Chill" className="" />
-                    <span className="font-bold text-[18px] ">Chill</span>
+                    <span className="font-bold text-[18px]">Chill</span>
                   </div>
                 </div>
               </div>
@@ -210,8 +240,7 @@ function Control() {
                       src={light}
                       alt="light"
                       className="rounded-[10px]"
-                      // bgImage={Image.src}
-                      onClick={() => console.log(Image.src)}
+                      onClick={getPath}
                     />
                   </div>
                 </div>

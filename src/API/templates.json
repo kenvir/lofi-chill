@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "name": "Dark background image",
+    "src": "Steven Jobs",
+    "tags": "dark"
+  },
+  {
+    "id": 2,
+    "name": "Light background image",
+    "src": "Steven Jobs",
+    "tags": "light"
+  },
+  {
+    "id": 3,
+    "name": "Chill background image",
+    "src": "Steven Jobs",
+    "tags": "chill"
+  }
+]
