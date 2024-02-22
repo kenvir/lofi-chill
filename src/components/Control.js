@@ -87,10 +87,10 @@ function Control() {
 
   // Change Templates
 
-  const [imgTemp, setImgTemp] = useState();
+  // var bgImg = document.getElementsByTagName("body")[0];
+  // console.log(bgImg.style.backgroundImage);
 
-  var bgImg = document.getElementsByTagName("body")[0];
-  // bgImg.style.backgroundImage = "url()";
+  const [imgTemp, setImgTemp] = useState();
 
   const getPath = (e) => {
     e.preventDefault();

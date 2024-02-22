@@ -21,7 +21,7 @@ function Player() {
   // Change state
   const [img, setImg] = useState(pauseImg);
 
-  const handleChange = () => {  
+  const handleChange = () => {
     if (img === pauseImg) {
       setImg(play);
       handleClickChill();
@@ -41,11 +41,13 @@ function Player() {
         className="w-[85px] h-[85px] border-[1px] rounded-full p-4 text-[24px] cursor-pointer hover:bg-[#9d9d9d66]"
         onClick={handleChange}
       />
-      <Image
-        src={pause}
-        alt="pause"
-        className="hidden w-[85px] h-[85px] border-[1px] rounded-full p-4 text-[24px] cursor-pointer hover:bg-[#9d9d9d66]"
-      />
+      {img && (
+        <Image
+          src={pauseImg}
+          alt="pause"
+          className="hidden w-[85px] h-[85px] border-[1px] rounded-full p-4 text-[24px] cursor-pointer hover:bg-[#9d9d9d66]"
+        />
+      )}
       <Image src={next} alt="next" className="cursor-pointer" />
     </div>
   );
