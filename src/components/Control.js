@@ -46,6 +46,61 @@ function Control() {
     setMore("hidden");
   };
 
+  // Sound and active Mood
+
+  const [sleepClick, { stopSleep }] = useSound("/sound/chill-1.mp3");
+  const [jazzClick, { stopJazz }] = useSound("/sound/chill-1.mp3");
+  const [chillClick, { stopChill }] = useSound("/sound/chill-1.mp3");
+
+  const [myId, setMyId] = useState("");
+
+  const handleClickSleep = () => {
+    sleepClick();
+    setMyId("sleep");
+    console.log(myId);
+    active === myId
+      ? setBackgroundStyle({
+          backgroundColor: "aqua",
+        })
+      : setBackgroundStyle({
+          backgroundColor: "white",
+        });
+    console.log("first", myId);
+    console.log("second", active);
+    console.log("third", setMyId);
+  };
+
+  const handleClickJazz = () => {
+    jazzClick();
+    setMyId("jazz");
+    console.log(myId);
+    active === myId
+      ? setBackgroundStyle({
+          backgroundColor: "aqua",
+        })
+      : setBackgroundStyle({
+          backgroundColor: "white",
+        });
+  };
+
+  const handleClickChill = () => {
+    chillClick();
+    setMyId("chill");
+    active === myId
+      ? setBackgroundStyle({
+          backgroundColor: "aqua",
+        })
+      : setBackgroundStyle({
+          backgroundColor: "white",
+        });
+  };
+
+  const [active, setActive] = useState("0");
+
+  const [backgroundStyle, setBackgroundStyle] = useState({
+    backgroundColor: "white", // Default background color
+  });
+
   // Total Volume
   // const [volume, setVolume] = useState(0.5);
   // const handleVolume = (event) => {
@@ -64,14 +119,11 @@ function Control() {
     setVolumeTraffic(parseFloat(e.target.value));
   };
 
-  // Sound
+  // Background Noise
   const [rainClick, { stopRain }] = useSound("/sound/rain.mp3", { volume });
   const [trafficClick, { stopTraffic }] = useSound("/sound/car.mp3", {
     volumeTraffic,
   });
-  const [chillClick, { stopChill }] = useSound("/sound/chill-1.mp3");
-  const [jazzClick, { stopJazz }] = useSound("/sound/chill-1.mp3");
-  const [SleepClick, { stopSleep }] = useSound("/sound/chill-1.mp3");
 
   const handleClickRain = () => {
     rainClick();
@@ -81,14 +133,10 @@ function Control() {
     trafficClick();
   };
 
-  const handleClickChill = () => {
-    chillClick();
-  };
-
   // Change Templates
 
   // var bgImg = document.getElementsByTagName("body")[0];
-  // console.log(bgImg.style.backgroundImage);
+  // console.log(bgImg.style);
 
   const [imgTemp, setImgTemp] = useState();
 
@@ -119,9 +167,19 @@ function Control() {
                 <span className="font-bold text-[22px] mb-4">MOOD</span>
                 <div className="flex justify-between">
                   <div
-                    className="flex flex-col items-center w-[90px] bg-white text-black py-3 px-4 rounded-[10px] cursor-pointer"
+                    className="flex flex-col items-center w-[90px] text-black py-3 px-4 rounded-[10px] cursor-pointer"
+                    style={backgroundStyle}
+                    id={myId}
                     onClick={() => {
-                      handleClickChill();
+                      setActive(myId);
+                      handleClickSleep();
+                      active === myId
+                        ? setBackgroundStyle({
+                            backgroundColor: "aqua",
+                          })
+                        : setBackgroundStyle({
+                            backgroundColor: "white",
+                          });
                     }}
                   >
                     <Image src={sleep} alt="sleep" className="" />
@@ -129,8 +187,12 @@ function Control() {
                   </div>
                   <div
                     className="flex flex-col items-center w-[90px] bg-white text-black py-3 px-4 rounded-[10px] cursor-pointer"
+                    // style={backgroundStyle}
+                    id={myId}
                     onClick={() => {
-                      handleClickChill();
+                      setActive(myId);
+                      handleClickJazz();
+                      // handleActive();
                     }}
                   >
                     <Image src={jazz} alt="jazz" className="" />
@@ -138,6 +200,7 @@ function Control() {
                   </div>
                   <div
                     className="flex flex-col items-center w-[90px] bg-white text-black py-3 px-4 rounded-[10px] cursor-pointer"
+                    id="chill"
                     onClick={() => {
                       handleClickChill();
                     }}
@@ -206,7 +269,7 @@ function Control() {
                     min="0"
                     step="0.01"
                     value={volumeTraffic}
-                    onChange={handleVolumeTraffic}
+                    onChange={handleVolume}
                     className="w-[56%]"
                   />
                 </div>

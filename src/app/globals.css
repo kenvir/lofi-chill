@@ -17,7 +17,7 @@
 }
 
 body {
-  background-image: url("../assets/imgs/16.jpg");   
+  background-image: url("../assets/imgs/16.jpg");
   background-position: inherit;
   background-repeat: no-repeat;
   background-size: cover;
@@ -106,6 +106,10 @@ body {
     top: 10px;
     right: 10px;
     cursor: pointer;
+  }
+
+  .active {
+    background-color: aqua;
   }
 }
 

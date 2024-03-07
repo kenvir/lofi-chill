@@ -139,7 +139,7 @@ function SignUp() {
           You have an account yet? &nbsp;
           <Link
             href="/SignIn"
-            className="text-[#001AFF] font-medium cursor-pointer"
+            className="text-white font-medium cursor-pointer"
           >
             Sign In.
           </Link>

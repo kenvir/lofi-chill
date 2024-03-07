@@ -83,7 +83,7 @@ function SignIn() {
           Dont have an account yet? &nbsp;
           <Link
             href="/SignUp"
-            className="text-[#001AFF] font-medium cursor-pointer"
+            className="text-white font-medium cursor-pointer"
           >
             Sign Up.
           </Link>
