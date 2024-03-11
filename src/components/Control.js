@@ -46,16 +46,38 @@ function Control() {
     setMore("hidden");
   };
 
-  // Sound and active Mood
+  // Total Volume
+  const [volume, setVolume] = useState(0.5);
+  const handleVolume = (event) => {
+    setVolume(parseFloat(event.target.value));
+  };
 
-  const [sleepClick, { stopSleep }] = useSound("/sound/chill-1.mp3");
-  const [jazzClick, { stopJazz }] = useSound("/sound/chill-1.mp3");
-  const [chillClick, { stopChill }] = useSound("/sound/chill-1.mp3");
+  // Sound and active Mood
+  const [sleepClick, { stop }] = useSound("/sound/chill-1.mp3", { volume });
+  const [jazzClick, { stopJazz }] = useSound("/sound/chill-1.mp3", { volume });
+  const [chillClick, { stopChill }] = useSound("/sound/chill-1.mp3", {
+    volume,
+  });
 
   const [myId, setMyId] = useState("");
 
+  const [active, setActive] = useState("");
+
+  const [backgroundStyle, setBackgroundStyle] = useState({
+    backgroundColor: "white", // Default background color
+  });
+
+  // const handleActive = () => {
+  //   active === myId
+  //     ? setBackgroundStyle({
+  //         backgroundColor: "aqua",
+  //       })
+  //     : setBackgroundStyle({
+  //         backgroundColor: "white",
+  //       });
+  // };
+
   const handleClickSleep = () => {
-    sleepClick();
     setMyId("sleep");
     console.log(myId);
     active === myId
@@ -67,51 +89,25 @@ function Control() {
         });
     console.log("first", myId);
     console.log("second", active);
-    console.log("third", setMyId);
+    // handleActive();
+    sleepClick() ? stop() : sleepClick();
   };
 
   const handleClickJazz = () => {
-    jazzClick();
     setMyId("jazz");
-    console.log(myId);
-    active === myId
-      ? setBackgroundStyle({
-          backgroundColor: "aqua",
-        })
-      : setBackgroundStyle({
-          backgroundColor: "white",
-        });
+    jazzClick();
   };
 
   const handleClickChill = () => {
-    chillClick();
     setMyId("chill");
-    active === myId
-      ? setBackgroundStyle({
-          backgroundColor: "aqua",
-        })
-      : setBackgroundStyle({
-          backgroundColor: "white",
-        });
+    chillClick();
   };
-
-  const [active, setActive] = useState("0");
-
-  const [backgroundStyle, setBackgroundStyle] = useState({
-    backgroundColor: "white", // Default background color
-  });
-
-  // Total Volume
-  // const [volume, setVolume] = useState(0.5);
-  // const handleVolume = (event) => {
-  //   setVolume(parseFloat(event.target.value));
-  // };
 
   // Rain Volume
-  const [volume, setVolume] = useState(0.5);
-  const handleVolume = (e) => {
-    setVolume(parseFloat(e.target.value));
-  };
+  // const [volume, setVolume] = useState(0.5);
+  // const handleVolume = (e) => {
+  //   setVolume(parseFloat(e.target.value));
+  // };
 
   // Traffic Volume
   const [volumeTraffic, setVolumeTraffic] = useState(0.5);
@@ -173,13 +169,6 @@ function Control() {
                     onClick={() => {
                       setActive(myId);
                       handleClickSleep();
-                      active === myId
-                        ? setBackgroundStyle({
-                            backgroundColor: "aqua",
-                          })
-                        : setBackgroundStyle({
-                            backgroundColor: "white",
-                          });
                     }}
                   >
                     <Image src={sleep} alt="sleep" className="" />
@@ -187,7 +176,7 @@ function Control() {
                   </div>
                   <div
                     className="flex flex-col items-center w-[90px] bg-white text-black py-3 px-4 rounded-[10px] cursor-pointer"
-                    // style={backgroundStyle}
+                    style={backgroundStyle}
                     id={myId}
                     onClick={() => {
                       setActive(myId);
@@ -200,9 +189,12 @@ function Control() {
                   </div>
                   <div
                     className="flex flex-col items-center w-[90px] bg-white text-black py-3 px-4 rounded-[10px] cursor-pointer"
+                    style={backgroundStyle}
                     id="chill"
                     onClick={() => {
+                      setActive(myId);
                       handleClickChill();
+                      // handleActive();
                     }}
                   >
                     <Image src={chill} alt="Chill" className="" />
@@ -216,13 +208,14 @@ function Control() {
                   type="range"
                   name=""
                   id="volume"
-                  // max="1"
-                  // min="0"
-                  // step="0.01"
-                  // value={volume}
-                  // onChange={handleVolume}
+                  max="1"
+                  min="0"
+                  step="0.01"
+                  value={volume}
+                  onChange={handleVolume}
                   className="w-[75%]"
                 />
+                {console.log(volume)}
                 <Image src={loud} alt="loud" className="" />
               </div>
               <div className="text-white mt-8">
@@ -243,11 +236,11 @@ function Control() {
                     type="range"
                     name=""
                     id="volume"
-                    max="1"
-                    min="0"
-                    step="0.01"
-                    value={volume}
-                    onChange={handleVolume}
+                    // max="1"
+                    // min="0"
+                    // step="0.01"
+                    // value={volume}
+                    // onChange={handleVolume}
                     className="w-[56%]"
                   />
                 </div>
@@ -265,11 +258,11 @@ function Control() {
                     type="range"
                     name=""
                     id="volumeTraffic"
-                    max="1"
-                    min="0"
-                    step="0.01"
-                    value={volumeTraffic}
-                    onChange={handleVolume}
+                    // max="1"
+                    // min="0"
+                    // step="0.01"
+                    // value={volumeTraffic}
+                    // onChange={handleVolume}
                     className="w-[56%]"
                   />
                 </div>
