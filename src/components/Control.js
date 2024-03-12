@@ -90,7 +90,7 @@ function Control() {
     console.log("first", myId);
     console.log("second", active);
     // handleActive();
-    sleepClick() ? stop() : sleepClick();
+    // sleepClick();
   };
 
   const handleClickJazz = () => {
@@ -165,7 +165,7 @@ function Control() {
                   <div
                     className="flex flex-col items-center w-[90px] text-black py-3 px-4 rounded-[10px] cursor-pointer"
                     style={backgroundStyle}
-                    id={myId}
+                    id="sleep"
                     onClick={() => {
                       setActive(myId);
                       handleClickSleep();
@@ -177,7 +177,7 @@ function Control() {
                   <div
                     className="flex flex-col items-center w-[90px] bg-white text-black py-3 px-4 rounded-[10px] cursor-pointer"
                     style={backgroundStyle}
-                    id={myId}
+                    id="jazz"
                     onClick={() => {
                       setActive(myId);
                       handleClickJazz();
@@ -215,7 +215,6 @@ function Control() {
                   onChange={handleVolume}
                   className="w-[75%]"
                 />
-                {console.log(volume)}
                 <Image src={loud} alt="loud" className="" />
               </div>
               <div className="text-white mt-8">

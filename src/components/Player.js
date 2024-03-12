@@ -38,7 +38,7 @@ function Player() {
         src={img}
         alt="play"
         id="play"
-        className="w-[85px] h-[85px] border-[1px] rounded-full p-4 text-[24px] cursor-pointer hover:bg-[#9d9d9d66]"
+        className="w-[85px] h-[85px] border-[2px] rounded-full p-4 text-[24px] cursor-pointer hover:bg-[#9d9d9d66]"
         onClick={handleChange}
       />
       {img && (
