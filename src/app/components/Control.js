@@ -2,6 +2,7 @@
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { useSound } from "use-sound";
+import Link from "next/link";
 
 import ClickOutsideWrapper from "./ClickOutSide";
 
@@ -59,47 +60,46 @@ function Control() {
     volume,
   });
 
-  const [myId, setMyId] = useState("");
-
   const [active, setActive] = useState("");
 
   const [backgroundStyle, setBackgroundStyle] = useState({
     backgroundColor: "white", // Default background color
   });
 
-  // const handleActive = () => {
-  //   active === myId
-  //     ? setBackgroundStyle({
-  //         backgroundColor: "aqua",
-  //       })
-  //     : setBackgroundStyle({
-  //         backgroundColor: "white",
-  //       });
-  // };
+  const [tagId, setTagId] = useState(null);
 
-  const handleClickSleep = () => {
-    setMyId("sleep");
-    console.log(myId);
-    active === myId
+  const handleClickSleep = (e) => {
+    setActive("sleep");
+
+    const id = e.currentTarget.id;
+    setTagId(id);
+
+    console.log("first", tagId);
+    console.log("second", active);
+
+    active === tagId
       ? setBackgroundStyle({
-          backgroundColor: "aqua",
+          backgroundColor: "aqua" && sleepClick(),
         })
       : setBackgroundStyle({
-          backgroundColor: "white",
+          backgroundColor: "white" && stop(),
         });
-    console.log("first", myId);
-    console.log("second", active);
+
     // handleActive();
     // sleepClick();
   };
 
+  useEffect(() => {
+    active && tagId !== "" ? handleClickSleep : null;
+  });
+
   const handleClickJazz = () => {
-    setMyId("jazz");
+    setActive("jazz");
     jazzClick();
   };
 
   const handleClickChill = () => {
-    setMyId("chill");
+    setActive("chill");
     chillClick();
   };
 
@@ -166,10 +166,7 @@ function Control() {
                     className="flex flex-col items-center w-[90px] text-black py-3 px-4 rounded-[10px] cursor-pointer"
                     style={backgroundStyle}
                     id="sleep"
-                    onClick={() => {
-                      setActive(myId);
-                      handleClickSleep();
-                    }}
+                    onClick={handleClickSleep}
                   >
                     <Image src={sleep} alt="sleep" className="" />
                     <span className="font-bold text-[18px] ">Sleepy</span>
@@ -333,10 +330,13 @@ function Control() {
                       Timer and Tasks
                     </span>
                   </div>
-                  <div className="flex items-center bg-[#848484] text-black py-3 px-4 rounded-[10px] gap-3 cursor-pointer">
+                  <Link
+                    href="/Notes"
+                    className="flex items-center bg-[#848484] text-black py-3 px-4 rounded-[10px] gap-3 cursor-pointer"
+                  >
                     <Image src={note} alt="note" className="" />
                     <span className="font-bold text-[18px] ">Notes</span>
-                  </div>
+                  </Link>
                 </div>
               </div>
             </div>
