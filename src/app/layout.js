@@ -1,6 +1,6 @@
 // These styles apply to every route in the application
 import "./globals.css";
-import Header from "../components/layouts/Header";
+import Header from "../app/components/layouts/Header";
 
 export const metadata = {
   title: "Lofi chill",

@@ -60,8 +60,6 @@ function Control() {
     volume,
   });
 
-  const [active, setActive] = useState("");
-
   const [backgroundStyle, setBackgroundStyle] = useState({
     backgroundColor: "white", // Default background color
   });
@@ -69,15 +67,12 @@ function Control() {
   const [tagId, setTagId] = useState(null);
 
   const handleClickSleep = (e) => {
-    setActive("sleep");
-
     const id = e.currentTarget.id;
     setTagId(id);
 
     console.log("first", tagId);
-    console.log("second", active);
 
-    active === tagId
+    tagId
       ? setBackgroundStyle({
           backgroundColor: "aqua" && sleepClick(),
         })
@@ -87,10 +82,18 @@ function Control() {
 
     // handleActive();
     // sleepClick();
+    if (tagId !== null) {
+      var element = document.getElementById(tagId);
+    }
+
+    console.log(element.id);
+    element
+      ? (element.style.backgroundColor = "aqua")
+      : (element.style.backgroundColor = "white");
   };
 
   useEffect(() => {
-    active && tagId !== "" ? handleClickSleep : null;
+    // tagId !== "" ? handleClickSleep : null;
   });
 
   const handleClickJazz = () => {
@@ -331,7 +334,7 @@ function Control() {
                     </span>
                   </div>
                   <Link
-                    href="/Notes"
+                    href="components/Notes"
                     className="flex items-center bg-[#848484] text-black py-3 px-4 rounded-[10px] gap-3 cursor-pointer"
                   >
                     <Image src={note} alt="note" className="" />

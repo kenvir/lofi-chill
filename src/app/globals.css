@@ -18,6 +18,7 @@
 
 body {
   background-image: url("../assets/imgs/16.jpg");
+  /* @include change-bg; */
   background-position: inherit;
   background-repeat: no-repeat;
   background-size: cover;
@@ -92,6 +93,10 @@ body {
     -webkit-transform: translateX(46px);
     -ms-transform: translateX(46px);
     transform: translateX(46px);
+
+    /* body {
+      background-image: url("../assets/imgs/17.jpg");
+    } */
   }
 
   .dark {

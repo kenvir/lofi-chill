@@ -1,5 +1,5 @@
-import Control from "../../components/Control";
-import Player from "../../components/Player";
+import Control from "../components/Control";
+import Player from "../components/Player";
 
 function Home() {
   return (
