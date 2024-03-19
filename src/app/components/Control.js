@@ -5,6 +5,7 @@ import { useSound } from "use-sound";
 import Link from "next/link";
 
 import ClickOutsideWrapper from "./ClickOutSide";
+import Start from "./Start/page";
 
 import modeImg from "@/src/assets/icons/mode.svg";
 import templatesImg from "@/src/assets/icons/templates.svg";
@@ -321,18 +322,22 @@ function Control() {
               <div className="flex-col flex">
                 <span className="font-bold text-[22px] mb-4">PRODUCTIVITY</span>
                 <div className="flex flex-col justify-between gap-10">
-                  <div className="flex items-center bg-[#848484] text-black py-3 px-4 rounded-[10px] gap-3 cursor-pointer">
+                  <Link href="components/Start" className="flex items-center bg-[#848484] text-black py-3 px-4 rounded-[10px] gap-3 cursor-pointer">
                     <Image src={start} alt="start" className="" />
                     <span className="font-bold text-[18px] ">
                       Start Session
                     </span>
-                  </div>
-                  <div className="flex items-center bg-[#848484] text-black py-3 px-4 rounded-[10px] gap-3 cursor-pointer">
+                  </Link>
+                  <Link
+                    href="/"
+                    className="flex items-center bg-[#848484] text-black py-3 px-4 rounded-[10px] gap-3 cursor-pointer"
+                    onClick={handleMore}
+                  >
                     <Image src={timer} alt="timer" className="" />
                     <span className="font-bold text-[18px] ">
                       Timer and Tasks
                     </span>
-                  </div>
+                  </Link>
                   <Link
                     href="components/Notes"
                     className="flex items-center bg-[#848484] text-black py-3 px-4 rounded-[10px] gap-3 cursor-pointer"
