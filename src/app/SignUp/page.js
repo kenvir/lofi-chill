@@ -14,7 +14,6 @@ function SignUp() {
     <div className="flex flex-col items-center">
       <form
         action=""
-        className="bg-[#8e8e8ea2] flex flex-col w-[600px] p-10 rounded-xl"
         onSubmit={handleSubmit()}
       >
         <h2 className="text-[64px] text-center font-bold mb-8">Sign Up</h2>

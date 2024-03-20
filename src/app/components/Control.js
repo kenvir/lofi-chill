@@ -135,16 +135,13 @@ function Control() {
 
   // Change Templates
 
-  // var bgImg = document.getElementsByTagName("body")[0];
-  // console.log(bgImg.style);
-
   const [imgTemp, setImgTemp] = useState();
 
   const getPath = (e) => {
     e.preventDefault();
     setImgTemp(e.target.src);
-    console.log(imgTemp);
   };
+  console.log(imgTemp);
 
   const changeTemp = () => {};
 
@@ -289,7 +286,12 @@ function Control() {
                 <span className="font-bold text-[22px] mb-4">TEMPLATES</span>
                 <div className="flex flex-col items-center justify-between gap-5">
                   <div className="flex items-center w-[245px] cursor-pointer">
-                    <Image src={dark} alt="dark" className="rounded-[10px]" />
+                    <Image
+                      src={dark}
+                      alt="dark"
+                      className="rounded-[10px]"
+                      onClick={getPath}
+                    />
                   </div>
                   <div className="flex items-center w-[245px] cursor-pointer">
                     <Image
@@ -322,7 +324,10 @@ function Control() {
               <div className="flex-col flex">
                 <span className="font-bold text-[22px] mb-4">PRODUCTIVITY</span>
                 <div className="flex flex-col justify-between gap-10">
-                  <Link href="components/Start" className="flex items-center bg-[#848484] text-black py-3 px-4 rounded-[10px] gap-3 cursor-pointer">
+                  <Link
+                    href="components/Start"
+                    className="flex items-center bg-[#848484] text-black py-3 px-4 rounded-[10px] gap-3 cursor-pointer"
+                  >
                     <Image src={start} alt="start" className="" />
                     <span className="font-bold text-[18px] ">
                       Start Session
@@ -331,7 +336,6 @@ function Control() {
                   <Link
                     href="/"
                     className="flex items-center bg-[#848484] text-black py-3 px-4 rounded-[10px] gap-3 cursor-pointer"
-                    onClick={handleMore}
                   >
                     <Image src={timer} alt="timer" className="" />
                     <span className="font-bold text-[18px] ">

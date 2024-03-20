@@ -1,13 +1,22 @@
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
-import dark from "@/src/assets/icons/dark.svg";
-import light from "@/src/assets/icons/light.svg";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 
+import dark from "@/src/assets/icons/dark.svg";
+import light from "@/src/assets/icons/light.svg";
+import BackgroundChanger from "./BackgroundChanger";
+
 function Header() {
   const router = useRouter;
+
+  const [isChecked, setIsChecked] = useState(false);
+
+  const handleChange = () => {
+    setIsChecked(!isChecked);
+  };
 
   return (
     <header className="flex justify-between items-center px-16 pt-3">
@@ -38,10 +47,10 @@ function Header() {
           </Link>
         </div>
         <label className="switch">
-          <input type="checkbox" />
+          <input type="checkbox" id="changeBackground" />
           <span className="slider rounded-[999px]"></span>
+          <Image src={light} alt="light" className="light" />
           <Image src={dark} alt="dark" className="dark" />
-          <Image src={light} alt="dark" className="light" />
         </label>
       </div>
     </header>

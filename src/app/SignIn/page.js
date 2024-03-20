@@ -12,12 +12,7 @@ function SignIn() {
 
   return (
     <main className="flex flex-col items-center mt-[80px] main">
-      <form
-        action=""
-        autoComplete="new-password"
-        className="form bg-[#8e8e8ea2] flex flex-col w-[600px] p-10 rounded-xl"
-        onSubmit={handleSubmit()}
-      >
+      <form action="" autoComplete="new-password" onSubmit={handleSubmit()}>
         <h2 className="text-[64px] text-center font-bold mb-8">Sign In</h2>
         <div className="flex flex-col h-[60px]">
           <div className="flex items-center justify-center">

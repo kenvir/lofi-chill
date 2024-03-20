@@ -17,32 +17,61 @@
 }
 
 body {
-  background-image: url("../assets/imgs/16.jpg");
-  /* @include change-bg; */
+  background-image: url("../assets/imgs/17.png");
   background-position: inherit;
   background-repeat: no-repeat;
   background-size: cover;
   height: 100vh;
 }
 
+@media (prefers-color-scheme: dark) {
+  body {
+    background-image: url("../assets/imgs/16.jpg");
+    background-position: inherit;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+  }
+}
+
+input[type="checkbox"]:checked ~ body {
+  background-image: url("../assets/imgs/17.png");
+}
+
 .main {
   height: calc(100vh - 67px);
 }
 
-.form {
-  background-color: #8e8e8ea2;
-  width: 600px;
+@layer base {
+  /* h1 {
+    @apply text-2xl;
+  } */
+
+  form {
+    @apply flex flex-col bg-[#8e8e8ea2] w-[600px] p-10 rounded-xl;
+  }
 }
 
-@layer base {
+@layer components {
+  /* .card {
+    background-color: theme('colors.white');
+    border-radius: theme('borderRadius.lg');
+    padding: theme('spacing.6');
+    box-shadow: theme('boxShadow.xl');
+  } */
+
+  /* .select2-dropdown {
+    @apply rounded-b-lg shadow-md;
+  } */
+}
+
+@layer utilities {
   .error-message {
     color: red;
     width: 100%;
     text-align: center;
   }
-}
 
-@layer components {
   .switch {
     position: relative;
     display: inline-block;
@@ -81,7 +110,7 @@ body {
     border-radius: 50%;
   }
 
-  input:checked + .slider {
+  input[type="checkbox"]:checked + .slider {
     background-color: #acacac;
   }
 
@@ -89,24 +118,20 @@ body {
     box-shadow: 0 0 1px #aeaeae;
   }
 
-  input:checked + .slider:before {
+  input[type="checkbox"]:checked + .slider:before {
     -webkit-transform: translateX(46px);
     -ms-transform: translateX(46px);
     transform: translateX(46px);
-
-    /* body {
-      background-image: url("../assets/imgs/17.jpg");
-    } */
   }
 
-  .dark {
+  .light {
     position: absolute;
     top: 10px;
     left: 10px;
     cursor: pointer;
   }
 
-  .light {
+  .dark {
     position: absolute;
     top: 10px;
     right: 10px;
@@ -116,7 +141,4 @@ body {
   .active {
     background-color: aqua;
   }
-}
-
-@layer utilities {
 }
