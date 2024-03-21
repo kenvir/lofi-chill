@@ -7,7 +7,7 @@ export const metadata = {
   description: "Enjoy music and chill",
 };
 
-export default function RootLayout({ children, bgImage }) {
+export default function RootLayout({ children, imgTemp }) {
   return (
     <html lang="en">
       <body>
@@ -15,11 +15,5 @@ export default function RootLayout({ children, bgImage }) {
         {children}
       </body>
     </html>
-
-    // <>
-    //   {" "}
-    //   <Header />
-    //   <main>{children}</main>
-    // </>
   );
 }

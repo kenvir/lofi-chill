@@ -10,8 +10,6 @@ import light from "@/src/assets/icons/light.svg";
 import BackgroundChanger from "./BackgroundChanger";
 
 function Header() {
-  const router = useRouter;
-
   const [isChecked, setIsChecked] = useState(false);
 
   const handleChange = () => {
@@ -49,8 +47,8 @@ function Header() {
         <label className="switch">
           <input type="checkbox" id="changeBackground" />
           <span className="slider rounded-[999px]"></span>
-          <Image src={light} alt="light" className="light" />
           <Image src={dark} alt="dark" className="dark" />
+          <Image src={light} alt="light" className="light" />
         </label>
       </div>
     </header>

@@ -136,14 +136,30 @@ function Control() {
   // Change Templates
 
   const [imgTemp, setImgTemp] = useState();
+  // const [imgBody, setImgBody] = useState(
+  //   window.getComputedStyle(document.body).backgroundImage.slice(5, -2)
+  // );
+
+  // console.log(
+  //   window.getComputedStyle(document.body).backgroundImage.slice(5, -2)
+  // );
+
+  // useEffect(() => {
+  //   getImgBody();
+  // });
 
   const getPath = (e) => {
     e.preventDefault();
     setImgTemp(e.target.src);
   };
-  console.log(imgTemp);
 
-  const changeTemp = () => {};
+  // const changeBgImg = () => {
+  //   imgTemp && imgTemp !== imgBody ? setImgBody(imgTemp) : imgBody;
+  // };
+
+  // useEffect(() => {
+  //   changeBgImg;
+  // });
 
   return (
     <div className="bg-[#d9d9d978] w-[100px] h-[360px] rounded-full absolute right-[100px] top-[200px]">
@@ -298,6 +314,10 @@ function Control() {
                       src={light}
                       alt="light"
                       className="rounded-[10px]"
+                      // onClick={() => {
+                      //   getPath;
+                      //   changeTemp();
+                      // }}
                       onClick={getPath}
                     />
                   </div>
