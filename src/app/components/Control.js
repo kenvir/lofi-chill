@@ -136,30 +136,20 @@ function Control() {
   // Change Templates
 
   const [imgTemp, setImgTemp] = useState();
-  // const [imgBody, setImgBody] = useState(
-  //   window.getComputedStyle(document.body).backgroundImage.slice(5, -2)
-  // );
-
-  // console.log(
-  //   window.getComputedStyle(document.body).backgroundImage.slice(5, -2)
-  // );
-
-  // useEffect(() => {
-  //   getImgBody();
-  // });
+  const [imgBody, setImgBody] = useState(
+    "http://localhost:3000/_next/static/media/16.cd0d44ee.jpg"
+  );
 
   const getPath = (e) => {
     e.preventDefault();
     setImgTemp(e.target.src);
   };
 
-  // const changeBgImg = () => {
-  //   imgTemp && imgTemp !== imgBody ? setImgBody(imgTemp) : imgBody;
-  // };
+  document.body.style.backgroundImage = "url('" + imgBody + "')";
 
-  // useEffect(() => {
-  //   changeBgImg;
-  // });
+  imgTemp
+    ? (document.body.style.backgroundImage = "url('" + imgTemp + "')")
+    : (document.body.style.backgroundImage = "url('" + imgBody + "')");
 
   return (
     <div className="bg-[#d9d9d978] w-[100px] h-[360px] rounded-full absolute right-[100px] top-[200px]">
@@ -353,7 +343,7 @@ function Control() {
                       Start Session
                     </span>
                   </Link>
-                  <Link
+                  {/* <Link
                     href="/"
                     className="flex items-center bg-[#848484] text-black py-3 px-4 rounded-[10px] gap-3 cursor-pointer"
                   >
@@ -361,7 +351,7 @@ function Control() {
                     <span className="font-bold text-[18px] ">
                       Timer and Tasks
                     </span>
-                  </Link>
+                  </Link> */}
                   <Link
                     href="components/Notes"
                     className="flex items-center bg-[#848484] text-black py-3 px-4 rounded-[10px] gap-3 cursor-pointer"

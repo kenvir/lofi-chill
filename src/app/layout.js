@@ -1,4 +1,5 @@
 // These styles apply to every route in the application
+
 import "./globals.css";
 import Header from "../app/components/layouts/Header";
 
@@ -7,7 +8,7 @@ export const metadata = {
   description: "Enjoy music and chill",
 };
 
-export default function RootLayout({ children, imgTemp }) {
+export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
