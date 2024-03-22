@@ -85,12 +85,11 @@ function Control() {
     // sleepClick();
     if (tagId !== null) {
       var element = document.getElementById(tagId);
+      console.log(element.id);
+      element
+        ? (element.style.backgroundColor = "aqua") && sleepClick()
+        : (element.style.backgroundColor = "white") && stop();
     }
-
-    console.log(element.id);
-    element
-      ? (element.style.backgroundColor = "aqua")
-      : (element.style.backgroundColor = "white");
   };
 
   useEffect(() => {
@@ -145,11 +144,16 @@ function Control() {
     setImgTemp(e.target.src);
   };
 
-  document.body.style.backgroundImage = "url('" + imgBody + "')";
-
   imgTemp
     ? (document.body.style.backgroundImage = "url('" + imgTemp + "')")
     : (document.body.style.backgroundImage = "url('" + imgBody + "')");
+
+  // Popup Start Session
+  const [showStart, setShowStart] = useState(false);
+
+  const handlePopup = () => {
+    setShowStart(!showStart);
+  };
 
   return (
     <div className="bg-[#d9d9d978] w-[100px] h-[360px] rounded-full absolute right-[100px] top-[200px]">
@@ -334,15 +338,15 @@ function Control() {
               <div className="flex-col flex">
                 <span className="font-bold text-[22px] mb-4">PRODUCTIVITY</span>
                 <div className="flex flex-col justify-between gap-10">
-                  <Link
-                    href="components/Start"
+                  <div
+                    onClick={handlePopup}
                     className="flex items-center bg-[#848484] text-black py-3 px-4 rounded-[10px] gap-3 cursor-pointer"
                   >
                     <Image src={start} alt="start" className="" />
                     <span className="font-bold text-[18px] ">
                       Start Session
                     </span>
-                  </Link>
+                  </div>
                   {/* <Link
                     href="/"
                     className="flex items-center bg-[#848484] text-black py-3 px-4 rounded-[10px] gap-3 cursor-pointer"
@@ -365,6 +369,8 @@ function Control() {
           </div>
         </ClickOutsideWrapper>
       </div>
+      {showStart && <Start />}
+      {console.log(open)}
     </div>
   );
 }

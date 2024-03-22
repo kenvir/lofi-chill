@@ -35,14 +35,14 @@ function Notes({ onAdd }) {
         <div className="flex items-center justify-between w-full gap-3">
           <Link href="/">
             <button
-              className="text-[22px] font-medium bg-red-600 p-3 rounded-lg w-full"
+              className="text-[22px] font-medium bg-[#d93a3a] hover:bg-[#ff0000] p-3 rounded-lg w-full"
               type="submit"
             >
               CANCEL
             </button>
           </Link>
           <button
-            className="text-[22px] font-medium bg-yellow-400 p-3 rounded-lg w-full"
+            className="text-[22px] font-medium bg-[#d8ba20] hover:bg-[#ffd600] p-3 rounded-lg w-full"
             type="submit"
           >
             ADD

@@ -67,40 +67,42 @@ const Start = () => {
   } = useTimer(0);
 
   return (
-    <div className="bg-transparent flex flex-col items-center gap-5">
-      <h3 className="text-[22px] font-bold">Start Session</h3>
-      <div className="flex flex-col items-center gap-4">
-        <p className="text-[20px]">{formatTime(timer)}</p>
-        <div className="gap-4 flex">
-          {!isActive && !isPaused ? (
+    <div className="bg-transparent flex flex-col items-center gap-5 absolute top-[-150px] left-[-680%]">
+      <div className="flex flex-col items-center border-[1px] border-solid border-[#fff] rounded-lg p-6 bg-[#c4c4c454]">
+        <h3 className="text-[22px] font-bold">Start Session</h3>
+        <div className="flex flex-col items-center gap-4">
+          <p className="text-[20px]">{formatTime(timer)}</p>
+          <div className="gap-4 flex">
+            {!isActive && !isPaused ? (
+              <button
+                onClick={handleStart}
+                className="text-[18px] font-medium border-[1px] border-solid rounded-lg px-5 py-3"
+              >
+                Start
+              </button>
+            ) : isPaused ? (
+              <button
+                onClick={handlePause}
+                className=" text-[18px] font-medium border-[1px] border-solid rounded-lg px-5 py-3"
+              >
+                Pause
+              </button>
+            ) : (
+              <button
+                onClick={handleResume}
+                className=" text-[18px] font-medium border-[1px] border-solid rounded-lg px-5 py-3"
+              >
+                Resume
+              </button>
+            )}
             <button
-              onClick={handleStart}
-              className="text-[18px] font-medium border-[1px] border-solid rounded-lg px-5 py-3"
-            >
-              Start
-            </button>
-          ) : isPaused ? (
-            <button
-              onClick={handlePause}
+              onClick={handleReset}
+              disabled={!isActive}
               className=" text-[18px] font-medium border-[1px] border-solid rounded-lg px-5 py-3"
             >
-              Pause
+              Reset
             </button>
-          ) : (
-            <button
-              onClick={handleResume}
-              className=" text-[18px] font-medium border-[1px] border-solid rounded-lg px-5 py-3"
-            >
-              Resume
-            </button>
-          )}
-          <button
-            onClick={handleReset}
-            disabled={!isActive}
-            className=" text-[18px] font-medium border-[1px] border-solid rounded-lg px-5 py-3"
-          >
-            Reset
-          </button>
+          </div>
         </div>
       </div>
     </div>
