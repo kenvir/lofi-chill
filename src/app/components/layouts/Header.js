@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
 import Link from "next/link";
 
 import dark from "@/src/assets/icons/dark.svg";
@@ -11,10 +10,6 @@ import BackgroundChanger from "./BackgroundChanger";
 
 function Header() {
   const [isChecked, setIsChecked] = useState(false);
-
-  const handleChange = () => {
-    setIsChecked(!isChecked);
-  };
 
   return (
     <header className="flex justify-between items-center px-16 pt-3">

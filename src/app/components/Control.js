@@ -1,4 +1,5 @@
 "use client";
+
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { useSound } from "use-sound";
@@ -67,28 +68,23 @@ function Control() {
 
   const [tagId, setTagId] = useState(null);
 
+  const idCurrent = useRef();
+
   const handleClickSleep = (e) => {
     const id = e.currentTarget.id;
     setTagId(id);
 
-    console.log("first", tagId);
+    tagId && console.log(tagId);
 
-    tagId
-      ? setBackgroundStyle({
-          backgroundColor: "aqua" && sleepClick(),
-        })
-      : setBackgroundStyle({
-          backgroundColor: "white" && stop(),
-        });
-
-    // handleActive();
-    // sleepClick();
     if (tagId !== null) {
       var element = document.getElementById(tagId);
       console.log(element.id);
-      element
-        ? (element.style.backgroundColor = "aqua") && sleepClick()
-        : (element.style.backgroundColor = "white") && stop();
+
+      if (element.id === tagId) {
+        (element.style.backgroundColor = "aqua") && sleepClick();
+      } else if (element.id !== tagId) {
+        (element.style.backgroundColor = "white") && stop();
+      }
     }
   };
 
@@ -96,14 +92,40 @@ function Control() {
     // tagId !== "" ? handleClickSleep : null;
   });
 
-  const handleClickJazz = () => {
-    setActive("jazz");
-    jazzClick();
+  const handleClickJazz = (e) => {
+    const id = e.currentTarget.id;
+    setTagId(id);
+
+    tagId && console.log(tagId);
+
+    if (tagId !== null) {
+      var element = document.getElementById(tagId);
+      console.log(element.id);
+
+      if (element.id === tagId) {
+        (element.style.backgroundColor = "aqua") && sleepClick();
+      } else if (element.id !== tagId) {
+        (element.style.backgroundColor = "white") && stop();
+      }
+    }
   };
 
-  const handleClickChill = () => {
-    setActive("chill");
-    chillClick();
+  const handleClickChill = (e) => {
+    const id = e.currentTarget.id;
+    setTagId(id);
+
+    tagId && console.log(tagId);
+
+    if (tagId !== null) {
+      var element = document.getElementById(tagId);
+      console.log(element.id);
+
+      if (element.id === tagId) {
+        (element.style.backgroundColor = "aqua") && sleepClick();
+      } else if (element.id !== tagId) {
+        (element.style.backgroundColor = "white") && stop();
+      }
+    }
   };
 
   // Rain Volume
@@ -144,9 +166,12 @@ function Control() {
     setImgTemp(e.target.src);
   };
 
-  imgTemp
-    ? (document.body.style.backgroundImage = "url('" + imgTemp + "')")
-    : (document.body.style.backgroundImage = "url('" + imgBody + "')");
+  if (typeof document !== "undefined") {
+    // will run in client's browser only
+    imgTemp
+      ? (document.body.style.backgroundImage = "url('" + imgTemp + "')")
+      : (document.body.style.backgroundImage = "url('" + imgBody + "')");
+  }
 
   // Popup Start Session
   const [showStart, setShowStart] = useState(false);
@@ -186,11 +211,7 @@ function Control() {
                     className="flex flex-col items-center w-[90px] bg-white text-black py-3 px-4 rounded-[10px] cursor-pointer"
                     style={backgroundStyle}
                     id="jazz"
-                    onClick={() => {
-                      setActive(myId);
-                      handleClickJazz();
-                      // handleActive();
-                    }}
+                    onClick={handleClickJazz}
                   >
                     <Image src={jazz} alt="jazz" className="" />
                     <span className="font-bold text-[18px] ">Jazzy</span>
@@ -199,11 +220,7 @@ function Control() {
                     className="flex flex-col items-center w-[90px] bg-white text-black py-3 px-4 rounded-[10px] cursor-pointer"
                     style={backgroundStyle}
                     id="chill"
-                    onClick={() => {
-                      setActive(myId);
-                      handleClickChill();
-                      // handleActive();
-                    }}
+                    onClick={handleClickChill}
                   >
                     <Image src={chill} alt="Chill" className="" />
                     <span className="font-bold text-[18px]">Chill</span>
@@ -370,7 +387,6 @@ function Control() {
         </ClickOutsideWrapper>
       </div>
       {showStart && <Start />}
-      {console.log(open)}
     </div>
   );
 }
