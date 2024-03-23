@@ -68,6 +68,8 @@ function Control() {
 
   const [tagId, setTagId] = useState(null);
 
+  const [audioPlaying, setAudioPlaying] = useState(false);
+
   const idCurrent = useRef();
 
   const handleClickSleep = (e) => {
@@ -80,17 +82,20 @@ function Control() {
       var element = document.getElementById(tagId);
       console.log(element.id);
 
-      if (element.id === tagId) {
+      if (element.id === tagId && !audioPlaying) {
         (element.style.backgroundColor = "aqua") && sleepClick();
-      } else if (element.id !== tagId) {
-        (element.style.backgroundColor = "white") && stop();
+        setAudioPlaying(true);
+      } else if (
+        element.id !== tagId ||
+        (element.style.backgroundColor = "aqua") ||
+        sleepClick()
+      ) {
+        element.style.backgroundColor = "white";
+        stop();
+        setAudioPlaying(false);
       }
     }
   };
-
-  useEffect(() => {
-    // tagId !== "" ? handleClickSleep : null;
-  });
 
   const handleClickJazz = (e) => {
     const id = e.currentTarget.id;
@@ -102,10 +107,17 @@ function Control() {
       var element = document.getElementById(tagId);
       console.log(element.id);
 
-      if (element.id === tagId) {
-        (element.style.backgroundColor = "aqua") && sleepClick();
-      } else if (element.id !== tagId) {
-        (element.style.backgroundColor = "white") && stop();
+      if (element.id === tagId && !audioPlaying) {
+        (element.style.backgroundColor = "aqua") && jazzClick();
+        setAudioPlaying(true);
+      } else if (
+        element.id !== tagId ||
+        (element.style.backgroundColor = "aqua") ||
+        jazzClick()
+      ) {
+        element.style.backgroundColor = "white";
+        stop();
+        setAudioPlaying(false);
       }
     }
   };
@@ -120,10 +132,17 @@ function Control() {
       var element = document.getElementById(tagId);
       console.log(element.id);
 
-      if (element.id === tagId) {
-        (element.style.backgroundColor = "aqua") && sleepClick();
-      } else if (element.id !== tagId) {
-        (element.style.backgroundColor = "white") && stop();
+      if (element.id === tagId && !audioPlaying) {
+        (element.style.backgroundColor = "aqua") && chillClick();
+        setAudioPlaying(true);
+      } else if (
+        element.id !== tagId ||
+        (element.style.backgroundColor = "aqua") ||
+        sleepClick()
+      ) {
+        element.style.backgroundColor = "white";
+        stop();
+        setAudioPlaying(false);
       }
     }
   };

@@ -6,7 +6,6 @@ import Link from "next/link";
 
 import dark from "@/src/assets/icons/dark.svg";
 import light from "@/src/assets/icons/light.svg";
-import BackgroundChanger from "./BackgroundChanger";
 
 function Header() {
   const [isChecked, setIsChecked] = useState(false);
