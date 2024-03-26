@@ -8,7 +8,26 @@ import dark from "@/src/assets/icons/dark.svg";
 import light from "@/src/assets/icons/light.svg";
 
 function Header() {
-  const [isChecked, setIsChecked] = useState(false);
+  const [checkedInput, setCheckedInput] = useState(false);
+
+  console.log(!checkedInput);
+
+  !checkedInput
+    ? (document.body.style.backgroundImage =
+        "url(http://localhost:3000/_next/static/media/16.cd0d44ee.jpg)")
+    : (document.body.style.backgroundImage =
+        "url(http://localhost:3000/_next/static/media/17.8c484fc2.png)");
+
+  const handleCheck = () => {
+    // checkedInput ? setCheckedInput(true) : setCheckedInput(false);
+    // console.log(checkedInput);
+
+    !checkedInput
+      ? (document.body.style.backgroundImage =
+          "url(http://localhost:3000/_next/static/media/17.8c484fc2.png)")
+      : (document.body.style.backgroundImage =
+          "url(http://localhost:3000/_next/static/media/16.cd0d44ee.jpg)");
+  };
 
   return (
     <header className="flex justify-between items-center px-16 pt-3">
@@ -39,7 +58,12 @@ function Header() {
           </Link>
         </div>
         <label className="switch">
-          <input type="checkbox" id="changeBackground" />
+          <input
+            type="checkbox"
+            // checked={setCheckedInput}
+            onClick={handleCheck}
+          />
+          {console.log(checkedInput)}
           <span className="slider rounded-[999px]"></span>
           <Image src={dark} alt="dark" className="dark" />
           <Image src={light} alt="light" className="light" />

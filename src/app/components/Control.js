@@ -138,7 +138,7 @@ function Control() {
       } else if (
         element.id !== tagId ||
         (element.style.backgroundColor = "aqua") ||
-        sleepClick()
+        chillClick()
       ) {
         element.style.backgroundColor = "white";
         stop();
