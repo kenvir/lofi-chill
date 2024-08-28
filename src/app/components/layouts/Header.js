@@ -12,16 +12,13 @@ function Header() {
 
   console.log(!checkedInput);
 
-  !checkedInput
-    ? (document.body.style.backgroundImage =
-        "url(http://localhost:3000/_next/static/media/16.cd0d44ee.jpg)")
-    : (document.body.style.backgroundImage =
-        "url(http://localhost:3000/_next/static/media/17.8c484fc2.png)");
+  // !checkedInput
+  //   ? (document.body.style.backgroundImage =
+  //       "url(http://localhost:3000/_next/static/media/16.cd0d44ee.jpg)")
+  //   : (document.body.style.backgroundImage =
+  //       "url(http://localhost:3000/_next/static/media/17.8c484fc2.png)");
 
   const handleCheck = () => {
-    // checkedInput ? setCheckedInput(true) : setCheckedInput(false);
-    // console.log(checkedInput);
-
     !checkedInput
       ? (document.body.style.backgroundImage =
           "url(http://localhost:3000/_next/static/media/17.8c484fc2.png)")
@@ -58,11 +55,7 @@ function Header() {
           </Link>
         </div>
         <label className="switch">
-          <input
-            type="checkbox"
-            // checked={setCheckedInput}
-            onClick={handleCheck}
-          />
+          <input type="checkbox" onClick={handleCheck} />
           {console.log(checkedInput)}
           <span className="slider rounded-[999px]"></span>
           <Image src={dark} alt="dark" className="dark" />

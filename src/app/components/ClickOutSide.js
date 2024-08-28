@@ -1,4 +1,5 @@
 // components/ClickOutsideWrapper.js
+'use client'
 import { useEffect } from "react";
 
 const ClickOutsideWrapper = ({ children, onClickOutside }) => {

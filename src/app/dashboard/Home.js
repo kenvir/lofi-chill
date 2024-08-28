@@ -1,3 +1,5 @@
+'use client'
+
 import Control from "../components/Control";
 import Player from "../components/Player";
 

@@ -1,3 +1,4 @@
+"use client";
 import Home from "./dashboard/Home";
 
 export default function HomePage() {
